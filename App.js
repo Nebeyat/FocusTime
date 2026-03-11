@@ -5,7 +5,19 @@ import { transparent } from "react-native-paper/lib/typescript/styles/themes/v2/
 import FocusTime from "./component/FocusTime";
 import { useState } from "react";
 export default function App(){
+    
+      
+      
+  
   const [addTask,setaddTask]=useState(false);
+  const [task,setTask] = useState("");
+  const handleBack = () =>{
+    setaddTask(prev =>! prev);
+  }
+  const handleTextChange= () =>{
+    setTask(task);
+    setTask("")
+  }
   if(addTask){
     return(
       <FocusTime/>
@@ -22,6 +34,8 @@ export default function App(){
           mode={'outlined'}
           label = "Focus"
           Style = {styles.InputText}
+          value = {task}
+          onChangeText = {handleTextChange}
           />
           <TouchableOpacity style={styles.fabButton} onPress={()=>{}}>
 
